@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Advice generator app</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="advice-container">
+      <div class="advice-label">
+        Advice <span class="advice-number" id="advice-id">
+          <!-- adivice id shown here  -->
+        </span>
+      </div>
+      <p class="advice-text" id="advice-text">
+        <!-- advice shown here by API  -->
+      </p>
+      <div class="divider">
+        <picture>
+          <source
+            media="(min-width:860px)"
+            srcset=" images/pattern-divider-desktop.svg"
+          />
+         
+          <img src="images/pattern-divider-mobiles.svg" alt="" />
+        </picture>
+      </div>
+      <button class="dice-btn btn" id="dice-btn">
+        <img src="images/icon-dice.svg" alt="Dice" />
+      </button>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://github.com/Abhishek2nayak">Abhishek Nayak</a>.
+    </div>
+    <script>
+      const adviceId = document.getElementById("advice-id");
+      const adviceText = document.getElementById("advice-text");
+
+      const API_URL = `https://api.adviceslip.com/advice`;
+
+      const diceBtn = document.getElementById("dice-btn");
+      diceBtn.addEventListener("click", newAdvice);
+    
+      function newAdvice() {
+         
+        fetch(API_URL)
+          .then((response) => response.json())
+          .then((data) => {
+            const slip = data.slip;
+            console.log(slip);
+            adviceId.textContent = `#${slip.id}`;
+            adviceText.innerHTML = `<i class="fa-solid fa-quote-left"></i>  ${slip.advice}  <i class="fa-solid fa-quote-right"></i>`;
+            diceBtn.classList.add("spin");
+            setTimeout(()=> {
+              diceBtn.classList.remove("spin");
+            },1000)
+          });
+      }
+     
+
+      newAdvice();
+    </script>
+  </body>
+</html>

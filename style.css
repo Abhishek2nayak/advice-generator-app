@@ -1,0 +1,196 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap');
+
+
+/* normalize the css  */
+
+
+html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+  }
+
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+ body {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }    
+  a {
+    background-color: transparent;
+  }
+  
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+  
+img {
+    border-style: none;
+  }
+  
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+
+:root {
+    --pri-light-cyan:hsl(193, 38%, 86%);
+    --pri-neo-green:hsl(150, 100%, 66%);
+    --neu-grayish-blue:hsl(217, 19%, 38%);
+    --neu-dark-grayish-blue:hsl(217, 19%, 24%);
+    --neu-dark-blue:hsl(218, 23%, 16%);
+    --fnt-size-quote:28px;
+}
+
+
+
+
+* {
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}  
+
+body {
+    min-width:100%;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    background-color:var(--neu-dark-blue);
+    font-family: 'Manrope', sans-serif;
+  
+
+}
+
+.advice-container {
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 500px;
+    background-color: var(--neu-dark-grayish-blue);
+   
+    padding:50px 30px;
+    border:none;
+    border-radius:10px;
+    min-height: 250px;
+    height: auto;
+    row-gap: 30px;
+    
+    
+    
+}
+.advice-label {
+    font-weight:bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color:var(--pri-neo-green);
+    font-size: 0.7rem;
+}
+
+.advice-text {
+    color:var(--pri-light-cyan);
+    font-weight:800;
+    font-size:28px;
+    text-align: center;
+}
+.dice-btn {
+    position: absolute;
+    bottom:-27px;
+    padding: 15px;
+    border-radius:50%;
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--pri-neo-green);
+    transition: .5s ease-in-out;
+}
+.dice-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 5px  var(--pri-neo-green);
+}
+
+
+.attribution {
+    position: absolute;
+    bottom:20px;
+    font-size:1.2rem;
+    letter-spacing: 1.4px;
+    color:grey;
+    padding:10px 30px;
+    text-align: center;
+}
+
+/* css to spin dice  */
+
+.spin {
+ 
+  animation-name: spinDice;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+@keyframes spinDice {
+   from {
+    transform: rotate(0deg);
+   } to {
+    transform:rotate(180deg);
+   }
+}
+
+
+.attribution a {
+    text-decoration: none;
+    color:white;
+}
+
+@media screen and (max-width: 860px) {
+  .advice-container {
+   margin:10px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .advice-container {
+    row-gap:10px;
+    padding:20px 30px;
+  }
+  .advice-container .advice-text {
+    font-size: 20px;
+  }
+  .attribution {
+    font-size:10px;
+  }
+}
